@@ -1,0 +1,20 @@
+<div class="login-container">
+  <div class="login-wrapper">
+    <div class="images">
+      <img src="assets/images/ProManager.svg" alt="ProManager" class="logo">
+      <img src="assets/images/login-image.png" alt="" class="main-bg">
+    </div>
+    <form class="form" [formGroup]="form">
+      <span class="form-title">Авторизация</span>
+      <div class="form-container">
+        <div class="input-container">
+          <input type="text" [class.error]="loginError()" formControlName="login" class="input" placeholder="Введите ваш логин" (input)="loginError.set(false)">
+        </div>
+        <div class="input-container">
+          <input type="password" formControlName="password" class="input" placeholder="Введите ваш пароль">
+        </div>
+      </div>
+      <button class="submit" [disabled]="disabled" (click)="login()">Авторизоваться</button>
+    </form>
+  </div>
+</div>

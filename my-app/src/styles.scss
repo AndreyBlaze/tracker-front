@@ -11,3 +11,52 @@ input, button {
 button {
   cursor: pointer;
 }
+
+:root {
+	--white: #fff;
+	--blue: #035fc3;
+	--black: #1a1a1a;
+	--gray: #cacaca;
+	--red: #d10000;
+	--light-gray: #e2e2e2;
+	--dark-gray: #7e7e7e;
+  --font-family: "Commissioner", sans-serif;
+  --second-family: "SF Pro Display", sans-serif;
+}
+
+@font-face {
+  font-family: 'Comissioner';
+  src: url('./assets/fonts/Commissioner-Bold.ttf') format('ttf');
+  font-weight: 700;
+}
+@font-face {
+  font-family: 'Comissioner';
+  src: url('./assets/fonts/Commissioner-Regular.ttf') format('ttf');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Comissioner';
+  src: url('./assets/fonts/Commissioner-Medium.ttf') format('ttf');
+  font-weight: 500;
+}
+@font-face {
+  font-family: 'Comissioner';
+  src: url('./assets/fonts/Commissioner-SemiBold.ttf') format('ttf');
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('./assets/fonts/SF-Pro-Display-Medium.otf') format('ttf');
+  font-weight: 500;
+}
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('./assets/fonts/SF-Pro-Display-Regular.otf') format('ttf');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'SF Pro Display';
+  src: url('./assets/fonts/SF-Pro-Display-SemiBold.otf') format('ttf');
+  font-weight: 600;
+}
