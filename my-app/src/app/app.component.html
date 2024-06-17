@@ -1,8 +1,8 @@
 @if (isAuthed) {
-  <ng-container>
+  <div class="main-container">
     <app-sidebar></app-sidebar>
     <router-outlet></router-outlet>
-  </ng-container>
+  </div>
 }
 @else {
   <router-outlet></router-outlet>

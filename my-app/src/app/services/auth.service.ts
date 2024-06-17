@@ -39,4 +39,11 @@ export class AuthService extends BaseService {
   isLoggedIn() {
     return this.isBrowser ? !!localStorage.getItem('token') : false;
   }
+
+  getToken() {
+    if (this.isBrowser) {
+      return localStorage.getItem('token');
+    }
+    return null;
+  }
 }

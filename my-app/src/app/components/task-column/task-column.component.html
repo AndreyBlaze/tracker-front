@@ -1,0 +1,39 @@
+<div class="column-container">
+  <span class="col-title">
+    {{column.name}}
+    <span class="col-tasks-count">{{column.tasks.length}}</span>
+  </span>
+  <div class="add-task" (click)="addTask()">
+    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M14 0C10.3009 0.0448832 6.76597 1.53429 4.15013 4.15013C1.53429 6.76597 0.0448832 10.3009 0 14C0.0448832 17.6991 1.53429 21.234 4.15013 23.8499C6.76597 26.4657 10.3009 27.9551 14 28C17.6991 27.9551 21.234 26.4657 23.8499 23.8499C26.4657 21.234 27.9551 17.6991 28 14C27.9551 10.3009 26.4657 6.76597 23.8499 4.15013C21.234 1.53429 17.6991 0.0448832 14 0ZM22 15H15V22H13V15H6V13H13V6H15V13H22V15Z" fill="#035FC3" />
+    </svg>
+    <span class="add-task-text">Добавить задачу</span>
+  </div>
+  <div class="tasks-container" 
+    [id]="column.id!"
+    cdkDropList
+    #tasksList="cdkDropList"
+    [cdkDropListData]="column.tasks"
+    (cdkDropListDropped)="changeColumn($event)">
+    @for (task of column.tasks; track task.dateAdd) {
+      <div class="task" cdkDrag>
+        <div class="task-text-container">
+          @if(editTask() === task.id) {
+            <textarea class="task-text-area" [(ngModel)]="task.text" (keyup.enter)="updateTask($event, task)"></textarea>
+          }
+          @else { 
+            <span class="task-text">{{task.text}}</span>
+          }
+          <svg class="more-icon" (click)="editTask.set(this.editTask() ? null : task.id)" width="3" height="13" viewBox="0 0 3 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="1.5" cy="1.5" r="1.5" fill="#1A1A1A" />
+            <circle cx="1.5" cy="6.5" r="1.5" fill="#1A1A1A" />
+            <circle cx="1.5" cy="11.5" r="1.5" fill="#1A1A1A" />
+          </svg>
+        </div>
+        @if (task.deadLine) {
+          <span class="deadline">{{task.deadLine | date: 'dd.MM.yyyy'}}</span>
+        }
+      </div>
+    }
+  </div>
+</div>

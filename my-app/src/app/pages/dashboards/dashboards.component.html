@@ -1,0 +1,11 @@
+<div class="page-container">
+  <span class="title">
+    Доски
+    <div class="count">{{boardsCount()}}</div>
+  </span>
+  <div class="boards-container">
+    @for (board of dashboards(); track $index) {
+      <button class="dashboard" routerLink="/projects/{{projectId}}/dashboards/{{board.id}}">{{board.name}}</button>
+    }
+  </div>
+</div>

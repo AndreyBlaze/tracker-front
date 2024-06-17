@@ -1,1 +1,24 @@
-<p>dashboard works!</p>
+@if (project() !== null) {
+  <div class="page-container">
+    <div class="title-container">
+      <span class="title" routerLink="/projects/{{this.projectId}}/dashboards">
+        <svg width="18" height="32" viewBox="0 0 18 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 16C0 16.6147 0.230089 17.139 0.707965 17.609L14.5133 31.4034C14.885 31.8011 15.3805 32 15.9469 32C17.0973 32 18 31.096 18 29.9028C18 29.3243 17.7699 28.8 17.3805 28.4023L4.93805 16L17.3805 3.59774C17.7699 3.18192 18 2.65763 18 2.0791C18 0.903955 17.0973 0 15.9469 0C15.3805 0 14.885 0.19887 14.5133 0.59661L0.707965 14.391C0.230089 14.861 0.0176991 15.3853 0 16Z" fill="#1A1A1A" />
+        </svg>
+        {{project()!.name}}
+      </span>
+      <div class="chat-container">
+        <span class="go-to-chat">Перейти в чат проекта</span>
+        <svg class="chat-icon" width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="42" height="42" rx="21" fill="#035FC3" />
+          <path d="M15.1071 29C16.0485 29 18.2526 28.0792 19.6913 27.0994C19.8444 26.9963 19.9745 26.9595 20.1046 26.9595C20.2041 26.9669 20.2883 26.9742 20.3571 26.9742C25.8903 26.9669 30 24.1381 30 19.9834C30 16.116 25.9974 13 21 13C16.0026 13 12 16.116 12 19.9834C12 22.3628 13.4617 24.5138 16.0102 25.8471C16.1709 25.9282 16.2092 26.0387 16.1327 26.186C15.6735 26.9227 14.9388 27.7182 14.6327 28.1013C14.2653 28.5433 14.4719 29 15.1071 29Z" fill="white" />
+        </svg>
+      </div>
+    </div>
+    <div class="columns" cdkDropListGroup>
+      @for (column of columns(); track columns.name) {
+        <app-task-column [column]="column" [projectId]="projectId"></app-task-column>
+      }
+    </div>
+  </div>
+}

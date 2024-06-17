@@ -1,1 +1,45 @@
-<p>sidebar works!</p>
+<div class="sidebar">
+  <img src="assets/images/mini-logo.svg" alt="ProManager" class="logo">
+  <div class="profile-container">
+    <div class="profile-wrapper">
+      <div class="profile">
+        @if (user()?.avatar === null) {
+          <div class="avatar">{{(user()?.surname ?? '')[0]}}{{(user()?.name ?? '')[0]}}</div>
+        }
+        @else {
+          <img [src]="user()?.avatar?.fullUrl" alt="" class="avatar">
+        }
+        <div class="profile-name-container">
+          <span class="profile-name">{{user()?.surname}} {{user()?.name}}</span>
+          <!-- <span class="profile-job">test</span> -->
+        </div>
+      </div>
+      <svg class="settings-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M17.4999 10C17.4999 9.77 17.4899 9.55 17.4699 9.32L19.3299 7.91C19.7299 7.61 19.8399 7.05 19.5899 6.61L17.7199 3.38C17.6 3.16818 17.4061 3.00814 17.1753 2.93062C16.9446 2.8531 16.6934 2.86356 16.4699 2.96L14.3199 3.87C13.9499 3.61 13.5599 3.38 13.1499 3.19L12.8599 0.88C12.7999 0.38 12.3699 0 11.8699 0H8.13991C7.62991 0 7.19991 0.38 7.13991 0.88L6.84991 3.19C6.43991 3.38 6.04991 3.61 5.67991 3.87L3.52991 2.96C3.06991 2.76 2.52991 2.94 2.27991 3.38L0.409909 6.62C0.159909 7.06 0.269909 7.61 0.669909 7.92L2.52991 9.33C2.48846 9.77905 2.48846 10.231 2.52991 10.68L0.669909 12.09C0.269909 12.39 0.159909 12.95 0.409909 13.39L2.27991 16.62C2.52991 17.06 3.06991 17.24 3.52991 17.04L5.67991 16.13C6.04991 16.39 6.43991 16.62 6.84991 16.81L7.13991 19.12C7.19991 19.62 7.62991 20 8.12991 20H11.8599C12.3599 20 12.7899 19.62 12.8499 19.12L13.1399 16.81C13.5499 16.62 13.9399 16.39 14.3099 16.13L16.4599 17.04C16.9199 17.24 17.4599 17.06 17.7099 16.62L19.5799 13.39C19.8299 12.95 19.7199 12.4 19.3199 12.09L17.4599 10.68C17.4899 10.45 17.4999 10.23 17.4999 10ZM10.0399 13.5C8.10991 13.5 6.53991 11.93 6.53991 10C6.53991 8.07 8.10991 6.5 10.0399 6.5C11.9699 6.5 13.5399 8.07 13.5399 10C13.5399 11.93 11.9699 13.5 10.0399 13.5Z" fill="#1A1A1A" />
+      </svg>
+    </div>
+    <span class="logout">Выйти из аккаунта</span>
+  </div>
+  <div class="links">
+    <span class="link" routerLink="/projects">Проекты</span>
+    <span class="link">Чаты</span>
+    <div class="dropdown-link" [class.expanded]="expandedDropdown()['tasks-view']">
+      <span class="link" (click)="expand('tasks-view')">
+        Отображение задач
+        <svg class="arrow" width="20" height="12" viewBox="0 0 20 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10.061 0C9.6792 0 9.35352 0.145996 9.06152 0.449219L0.492676 9.20898C0.245605 9.44482 0.12207 9.75928 0.12207 10.1187C0.12207 10.8486 0.683594 11.4214 1.4248 11.4214C1.78418 11.4214 2.10986 11.2754 2.35693 11.0283L10.061 3.1333L17.7651 11.0283C18.0234 11.2754 18.3491 11.4214 18.7085 11.4214C19.4385 11.4214 20 10.8486 20 10.1187C20 9.75928 19.8765 9.44482 19.6294 9.20898L11.0605 0.449219C10.7686 0.145996 10.4429 0.0112305 10.061 0Z" fill="white" />
+        </svg>
+      </span>
+      @if (expandedDropdown()['tasks-view']) {
+        <div class="options">
+          <div class="option">1</div>
+          <span class="option">Список</span>
+          <span class="option">Дашборд</span>
+        </div>
+      }
+    </div>
+    @if (user()?.role === 1) {
+      <span class="link">Пользователи</span>
+    }
+  </div>
+</div>
